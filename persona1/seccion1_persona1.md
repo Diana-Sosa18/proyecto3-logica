@@ -1,0 +1,83 @@
+# Persona 1
+
+**Nombre:** Juan Fernando Menéndez Guerra
+
+**Carné:** 17444
+
+## 1. Qué es Lean y qué es un asistente de pruebas
+
+### 1.1 Qué es un asistente de pruebas
+
+Un asistente de pruebas es un programa de computadora que permite escribir demostraciones matemáticas de manera que la máquina pueda revisarlas paso por paso. La persona sigue siendo quien decide cómo demostrar algo, por ejemplo qué suponer o qué regla usar, y el programa comprueba que cada paso esté permitido por las reglas de la lógica. Si un paso no se justifica, el asistente no lo acepta y señala dónde está el problema.
+
+Un asistente de pruebas no es lo mismo que un demostrador automático. Un demostrador automático recibe una afirmación y trata de encontrar la prueba por su cuenta, sin ayuda. Un asistente de pruebas, en cambio, trabaja de forma interactiva, porque la persona construye la demostración y la computadora la va verificando. Algunos asistentes incluyen herramientas automáticas para completar pasos pequeños o cálculos largos, pero el trabajo principal lo sigue haciendo quien demuestra.
+
+Esta forma de trabajar se parece mucho a lo que hacemos en el curso cuando escribimos una demostración formal. En clase, cada línea de una prueba debe justificarse con una premisa, un teorema ya conocido o una regla de inferencia, como el Modus Ponens. Un asistente de pruebas exige exactamente lo mismo, con la diferencia de que no deja pasar ningún descuido. Por eso, una demostración aceptada por un asistente da mucha confianza, ya que no depende de que un lector revise con cuidado cada detalle.
+
+### 1.2 Breve historia de los asistentes de pruebas
+
+La idea de usar computadoras para revisar demostraciones surgió a finales de los años sesenta. En 1967, el matemático neerlandés Nicolaas de Bruijn comenzó el proyecto Automath, considerado el primer verificador de pruebas; años más tarde, en 1977, con él se revisó por completo un libro de fundamentos del análisis escrito por Edmund Landau. En 1972, Robin Milner presentó en la Universidad de Stanford el sistema LCF, cuya manera de organizar el programa, con un núcleo pequeño encargado de aceptar o rechazar cada paso, sigue presente en muchos asistentes actuales. En 1973, Andrzej Trybulec creó en Polonia el sistema Mizar, basado en la teoría de conjuntos y pensado para que las pruebas se leyeran de forma parecida a un texto matemático común.
+
+Durante los años ochenta aparecieron sistemas que todavía se usan hoy. En 1984, Gérard Huet y Thierry Coquand iniciaron en Francia el desarrollo de Coq (hoy conocido como Rocq), basado en una teoría llamada cálculo de construcciones, y en 1989 se publicó una de sus primeras versiones estables. En 1986, Lawrence Paulson, de la Universidad de Cambridge, presentó Isabelle, otro asistente de gran influencia.
+
+Con el tiempo, estas herramientas pasaron de revisar ejercicios pequeños a verificar resultados famosos. En 2005, Georges Gonthier terminó en Coq una demostración completamente revisada por computadora del teorema de los cuatro colores, que afirma que cualquier mapa puede colorearse con solo cuatro colores sin que dos regiones vecinas compartan color. En 2014, el equipo de Thomas Hales completó el proyecto Flyspeck, que verificó con los asistentes HOL Light e Isabelle la prueba de la conjetura de Kepler sobre la forma más eficiente de acomodar esferas. En los dos casos, la demostración original dependía de cálculos por computadora tan extensos que los revisores no podían comprobarlos a mano por completo.
+
+### 1.3 Qué es Lean
+
+Lean es un asistente de pruebas y, al mismo tiempo, un lenguaje de programación. Es software libre, distribuido bajo la licencia Apache 2.0, y su código está disponible públicamente. Con Lean se pueden escribir programas comunes, pero su uso más conocido es escribir definiciones, enunciados y demostraciones matemáticas que la computadora verifica.
+
+La base teórica de Lean se llama cálculo de construcciones inductivas, la misma familia de teorías que usa Coq. La idea principal es que en Lean las proposiciones se tratan como si fueran tipos de datos y las demostraciones como objetos de esos tipos. Así como en un lenguaje de programación el número 5 es un objeto de tipo entero, en Lean una demostración de "p y q" es un objeto cuyo tipo es la proposición p ∧ q. Demostrar una proposición significa, entonces, construir un objeto de ese tipo. Cuando Lean revisa una prueba hace algo parecido a lo que hace un compilador con un programa. Si todo encaja, la acepta, y si algo no corresponde, muestra un error. Esta relación entre proposiciones y tipos se conoce como la correspondencia de Curry-Howard.
+
+Para escribir una demostración, Lean ofrece dos estilos. En el primero se escribe directamente el objeto que sirve como prueba. En el segundo, llamado modo de tácticas, se avanza con instrucciones como intro, exact o constructor, cada una de las cuales transforma lo que falta por demostrar, de forma muy parecida a como avanzamos línea por línea en clase. Mientras se trabaja, Lean muestra en todo momento qué hipótesis están disponibles y qué meta queda pendiente.
+
+Alrededor de Lean existe además una comunidad grande que mantiene Mathlib, una biblioteca de matemáticas escrita y verificada en Lean. Mathlib comenzó en 2017 y en 2025 ya reunía más de doscientos mil teoremas de áreas como álgebra, análisis, topología y teoría de números. Gracias a esta biblioteca, quien usa Lean no tiene que demostrar todo desde cero, sino que puede apoyarse en resultados que ya fueron revisados.
+
+### 1.4 Historia de Lean
+
+Lean nació en 2013 como un proyecto de Leonardo de Moura, investigador de Microsoft Research. De Moura ya era conocido por haber desarrollado Z3, un programa muy usado para verificar software, y con Lean quería acercar la demostración interactiva y la automática, que hasta entonces solían trabajarse por separado. Las primeras versiones fueron experimentales. Lean 2, publicado en 2015, fue la primera versión oficial, y Lean 3, publicado en enero de 2017, fue la primera versión lo bastante estable como para atraer a una comunidad de matemáticos y estudiantes. Ese mismo año comenzó la biblioteca Mathlib.
+
+En 2018 inició el desarrollo de Lean 4, una versión reescrita casi por completo, ahora implementada en gran parte en el mismo Lean. Su versión 4.0 estable se publicó el 8 de septiembre de 2023. En julio de ese año, Leonardo de Moura y Sebastian Ullrich fundaron Lean FRO, una organización sin fines de lucro dedicada a mantener y mejorar Lean. Al momento de escribir este documento, la versión estable más reciente era la 4.35.0, y es la que se usó para las demostraciones de este proyecto.
+
+Varios logros dieron a conocer a Lean fuera del ámbito de la computación. A finales de 2020, el matemático Peter Scholze propuso el reto de verificar en Lean uno de sus resultados más complejos, y en julio de 2022 un equipo dirigido por Johan Commelin terminó esa verificación, conocida como Liquid Tensor Experiment. En 2023, Terence Tao y otros matemáticos formalizaron en unas tres semanas la demostración de la conjetura polinomial de Freiman-Ruzsa, casi en cuanto los autores publicaron su artículo. En 2025, Lean recibió el premio de software de lenguajes de programación que otorga ACM SIGPLAN.
+
+Lean también tiene un lugar en la enseñanza. Kevin Buzzard, del Imperial College de Londres, lo ha usado con estudiantes de matemáticas, y hay materiales en línea para aprender desde cero, como el Natural Number Game, un juego en el que se demuestran propiedades de los números naturales. La referencia principal de este proyecto es el libro Logic and Proof, escrito por Jeremy Avigad, Robert Y. Lewis y Floris van Doorn, y adaptado a Lean 4 por Joseph Hua. El libro enseña lógica proposicional y lógica de primer orden al mismo tiempo que muestra cómo escribir esas pruebas en Lean.
+
+### 1.5 Instalación
+
+Hay dos formas de empezar a usar Lean. La más sencilla no requiere instalar nada: en la página live.lean-lang.org hay un editor en línea donde se puede escribir código de Lean y ver de inmediato si las pruebas son correctas. Los ejemplos del libro Logic and Proof incluyen un botón que abre cada ejemplo directamente en ese editor. Esta opción es útil para probar ideas rápidas, aunque depende de la conexión a internet.
+
+La segunda forma, y la recomendada para trabajar con más comodidad, es instalar Lean en la computadora junto con el editor Visual Studio Code. Para este proyecto se instaló en una computadora con Fedora Linux siguiendo estos pasos:
+
+1. Instalar Visual Studio Code, que se descarga desde code.visualstudio.com.
+2. Verificar que estén instalados git y curl. En Fedora se instalan con el comando `sudo dnf install git curl`.
+3. Instalar elan, el administrador de versiones de Lean, con el comando oficial:
+
+   ```
+   curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
+   ```
+
+   Al terminar, se ejecuta `source $HOME/.elan/env` (o se abre una terminal nueva) para que el sistema reconozca los comandos de Lean.
+4. Instalar en Visual Studio Code la extensión llamada Lean 4. Se busca por su nombre en el panel de extensiones (Ctrl+Shift+X) o se instala desde la terminal con `code --install-extension leanprover.lean4`.
+5. Comprobar la instalación con `lean --version`. En nuestro caso, el resultado fue Lean 4.35.0, junto con elan 4.2.4 y Lake 5.0.0.
+
+En cualquier sistema, incluso en Linux, también se puede instalar solo Visual Studio Code y la extensión Lean 4, porque la propia extensión abre una guía que instala elan y lo demás. Aquí se describen los pasos manuales porque permiten ver qué se instala en cada momento.
+
+Al terminar quedan instaladas tres herramientas, cada una con una función distinta. Elan se encarga de descargar y actualizar las versiones de Lean, de modo que cada proyecto pueda usar la versión que necesita. Lean es el programa que revisa el código y las demostraciones. Lake es la herramienta que crea y organiza proyectos; por ejemplo, el comando `lake new MiProyecto` crea una carpeta con todo lo necesario, y `lake build` revisa el proyecto completo. Si se quiere trabajar con la biblioteca Mathlib, existe una variante de este comando que la incluye, aunque la primera vez tarda bastante en bajar. Para las demostraciones de este trabajo no se necesitó Mathlib, porque las conectivas lógicas y las tácticas básicas ya vienen incluidas en Lean.
+
+Para revisar que todo funciona, se crea un archivo con extensión .lean, por ejemplo Prueba.lean, y se escribe la línea `#eval 1 + 1`. Si la instalación es correcta, Lean muestra el resultado 2. Al abrir un archivo .lean, Visual Studio Code muestra a la derecha un panel llamado Lean InfoView. Este panel indica, según la posición del cursor, qué hipótesis se tienen y qué falta por demostrar. Cuando una demostración está completa, el panel muestra el mensaje No goals, que significa que ya no quedan metas pendientes, junto con el aviso Goals accomplished!, y en el margen izquierdo aparece una doble marca de verificación junto al teorema.
+
+## Reflexión personal
+
+Antes de este proyecto, para mí una demostración era algo que se escribía en papel y que alguien más, normalmente el catedrático, revisaba después. Trabajar con Lean me hizo ver el proceso de otra forma. Lo primero que me llamó la atención fue que la computadora no acepta nada "porque es obvio". En clase, a veces uno salta un paso sencillo sabiendo que el lector lo va a entender, pero en Lean cada paso tiene que estar escrito y justificado, aunque se trate de algo tan simple como cambiar el orden de p y q.
+
+Al principio me costó entender la idea de que una prueba es un objeto de un tipo, porque es muy distinta a la forma en que estamos acostumbrados a pensar en una demostración. Sin embargo, al escribir las pruebas de conmutatividad noté que las tácticas siguen casi la misma lógica que las reglas de inferencia del curso: intro es suponer el antecedente, constructor es la introducción de la conjunción y cases es razonar por casos. Ver esa relación me ayudó a entender mejor las propias reglas, porque tuve que pensar qué hace exactamente cada una.
+
+También me sirvió hacer la instalación en mi computadora en vez de quedarme con el editor en línea. No fue difícil, aunque al instalar elan salieron unas advertencias en la terminal que al principio me preocuparon y que al final no afectaron en nada. Lo que más me gustó fue el panel InfoView, porque en cada línea muestra qué falta por demostrar y, cuando me equivoco, Lean me dice de inmediato en dónde. Me quedé con curiosidad por la doble negación que le tocó a otro integrante del grupo, porque leí en Logic and Proof que una de sus direcciones necesita lo que el libro llama razonamiento clásico, y quiero entender por qué.
+
+## Referencias
+
+- Avigad, J., Lewis, R. Y., van Doorn, F. y Hua, J. *Logic and Proof*. Lean Community. https://leanprover-community.github.io/logic_and_proof/
+- de Moura, L. y Ullrich, S. (2021). The Lean 4 Theorem Prover and Programming Language. En *Automated Deduction, CADE 28*, Lecture Notes in Computer Science, vol. 12699. Springer.
+- de Moura, L., Kong, S., Avigad, J., van Doorn, F. y von Raumer, J. (2015). The Lean Theorem Prover (System Description). En *Automated Deduction, CADE 25*. Springer.
+- Lean FRO. Install Lean. https://lean-lang.org/install/
+- Lean FRO. The Lean Language Reference. https://lean-lang.org/doc/reference/latest/
